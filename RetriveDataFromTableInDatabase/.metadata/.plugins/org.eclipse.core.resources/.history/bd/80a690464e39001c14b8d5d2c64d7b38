@@ -1,0 +1,45 @@
+package bms;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class RetriveDataFromCustomerDetails {
+
+	public static void main(String[] args) {
+		Connection connection = null;
+		Statement statement = null;
+		String sql = "select * from customer_details";
+
+		try {
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "C##BMS", "abcd");
+			statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while(resultSet.next()) {
+				System.out.println(resultSet.getInt("cid"));
+				System.out.println(resultSet.getString("firstname"));
+				System.out.println(resultSet.getString("lastname"));
+				System.out.println(resultSet.getString("street"));
+			}
+			//System.out.println(resultSet);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

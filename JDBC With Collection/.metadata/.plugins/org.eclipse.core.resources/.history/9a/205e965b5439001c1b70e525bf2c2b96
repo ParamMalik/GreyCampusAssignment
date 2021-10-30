@@ -1,0 +1,32 @@
+package com.trantor;
+
+import java.util.ArrayList;
+
+public class DisplayingFetchedData {
+
+	public static void main(String[] args) {
+
+		FetchingDataFromCustomerDetails details = new FetchingDataFromCustomerDetails();
+		
+
+		ArrayList<CustomerDetails> emplist = details.fetchRecords();
+		emplist.forEach(customer -> {
+			System.out.println(customer.getInt("cid"));
+			System.out.println(customer.getString("firstname"));
+			System.out.println(customer.getString("lastname"));
+			System.out.println(customer.getString("street"));
+			System.out.println(customer.getString("city"));
+			System.out.println(customer.getString("state"));
+			System.out.println(customer.getInt("zipcode"));
+			System.out.println(customer.getString("product_name"));
+			System.out.println(customer.getString("created_on"));
+			System.out.println(customer.getString("created_by"));
+			System.out.println(customer.getString("update_on"));
+			System.out.println(customer.getString("updated_by"));
+
+			System.out.println();
+		});
+
+	}
+
+}

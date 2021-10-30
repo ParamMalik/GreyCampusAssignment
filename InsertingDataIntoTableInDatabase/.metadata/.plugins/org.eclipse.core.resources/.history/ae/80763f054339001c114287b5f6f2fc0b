@@ -1,0 +1,24 @@
+package com.trantor;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class InsertingDataIntoTableJdbc {
+	public void insertData() {
+		Connection connection = null;
+		PreparedStatement prepareStatement = null;
+		String sql = "insert into customer_details values(?,?,?,?,?,?,?,?,?,?,?,?)";
+	try {
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","C##BMS","abcd");
+		prepareStatement = connection.prepareStatement(null);
+		
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+
+	}
+}
